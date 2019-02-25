@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aiwen.wfgwechat.dao.FieldMapper" >
+  <resultMap id="BaseResultMap" type="com.aiwen.wfgwechat.entity.pojo.Field" >
+    <id column="field_id" property="fieldId" jdbcType="VARCHAR" />
+    <result column="field_name" property="fieldName" jdbcType="VARCHAR" />
+    <result column="field_cmd" property="fieldCmd" jdbcType="VARCHAR" />
+    <result column="field_data_type" property="fieldDataType" jdbcType="VARCHAR" />
+    <result column="field_desc" property="fieldDesc" jdbcType="VARCHAR" />
+    <result column="field_seq" property="fieldSeq" jdbcType="VARCHAR" />
+    <result column="field_fill" property="fieldFill" jdbcType="VARCHAR" />
+    <result column="field_regular" property="fieldRegular" jdbcType="VARCHAR" />
+    <result column="create_name" property="createName" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_name" property="updateName" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+  <select id="findIdListByField" parameterType="java.util.List" resultMap="BaseResultMap">
+    select * from alz_ms_field where field_id in
+    <foreach collection="list" open="(" close=")" separator="," item="item">
+      #{item}
+    </foreach>
+  </select>
+
+  <select id="findAll" resultMap="BaseResultMap">
+    select * from alz_ms_field
+  </select>
+</mapper>

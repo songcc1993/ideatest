@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aiwen.wfgwechat.dao.ArticleObjDao" >
+  <resultMap id="BaseResultMap" type="com.aiwen.wfgwechat.entity.pojo.Article" >
+    <id column="app_id" property="appId"  />
+    <result column="app_title" property="appTitle" />
+    <result column="app_title_long" property="appTitleLong"  />
+    <result column="app_content" property="appContent"  />
+    <result column="app_img" property="appImg"  />
+    <result column="app_descride" property="appDescride" />
+    <result column="app_attachment" property="appAttachment"  />
+    <result column="app_field" property="appField" />
+    <result column="app_status" property="appStatus"  />
+    <result column="app_group" property="appGroup"  />
+    <result column="app_version" property="appVersion"  />
+    <result column="app_flag" property="appFlag"  />
+    <result column="app_date" property="appDate"  />
+    <result column="create_name" property="createName"  />
+    <result column="create_date" property="createDate"  />
+    <result column="update_name" property="updateName" />
+    <result column="update_date" property="updateDate" />
+  </resultMap>
+
+  <sql id="field">
+    app_id,app_title,app_title_long,app_content,app_img,app_descride,app_attachment,app_field,app_status,app_group,app_version,app_flag,app_date,create_name,create_date,update_name,update_date
+  </sql>
+
+  <sql id="table">
+    alz_ps_article
+  </sql>
+  
+  <insert id="insertArticle" parameterType="com.aiwen.wfgwechat.entity.pojo.Article">
+    insert into
+        <include refid="table" />
+     values
+     (#{appId},#{appTitle},#{appTitleLong},#{appContent},#{appImg},#{appDescride},#{appAttachment},#{appField},#{appStatus},#{appGroup},#{appVersion},#{appFlag},#{appDate},#{createName},#{createDate},#{updateName},#{updateDate})
+  </insert>
+
+  <select id="findArticle" resultMap="BaseResultMap" parameterType="com.aiwen.wfgwechat.entity.pojo.Article">
+    select
+      <include refid="field" />
+    from
+      <include refid="table" />
+    where
+      app_flag = #{appFlag}
+  </select>
+
+  <update id="updataArticle" parameterType="com.aiwen.wfgwechat.entity.pojo.Article">
+    update <include refid="table" /> set  app_status =#{appStatus} where app_id = #{appId}
+  </update>
+
+</mapper>

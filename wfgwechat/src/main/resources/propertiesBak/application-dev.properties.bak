@@ -1,0 +1,18 @@
+
+
+
+
+server.port=8081
+# Mysql 注意替换相应配置
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://59.110.161.250:3306/public_test_small?serverTimezone=UTC
+spring.datasource.username=root
+spring.datasource.password=root
+spring.datasource.type=com.alibaba.druid.pool.DruidDataSource
+
+
+#日志模式
+logging.level.org.hibernate.SQL=debug
+
+# thymeleaf thymeleaf没有缓存 便于热启动
+spring.thymeleaf.cache=false

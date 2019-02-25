@@ -1,0 +1,24 @@
+#开发环境对应的配置文件
+spring.profiles.active=dev
+# jpa config
+spring.jpa.show-sql=true
+#create : 每运行一次  表结构进行重新创建
+#updat : 每运行一次  表结构进行更新
+#validate: 每运行一次  表结构进行验证
+spring.jpa.hibernate.ddl-auto=update
+
+# session会话存储类型
+spring.session.store-type=redis
+
+# thymeleaf
+#以html模式访问
+spring.thymeleaf.mode=HTML
+#后缀为html
+spring.thymeleaf.suffix=.html
+#前缀
+spring.thymeleaf.prefix=classpath:/templates/
+#可以通过使用server.error.whitelabel.enabled=false来关闭默认的错误页面，以使用servlet容器的默认页面。
+#ThymeLeaf：在template中新建一个error.html文件
+server.error.whitelabel.enabled=false
+#排除那个目录的文件不需要restart
+spring.devtools.restart.exclude=templates/**,static/**

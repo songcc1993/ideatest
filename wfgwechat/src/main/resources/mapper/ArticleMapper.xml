@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aiwen.wfgwechat.dao.ArticleMapper" >
+  <resultMap id="BaseResultMap" type="com.aiwen.wfgwechat.entity.pojo.Article" >
+    <id column="app_id" property="appId" jdbcType="VARCHAR" />
+    <result column="app_title" property="appTitle" jdbcType="VARCHAR" />
+    <result column="app_title_long" property="appTitleLong" jdbcType="VARCHAR" />
+    <result column="app_img" property="appImg" jdbcType="VARCHAR" />
+    <result column="app_descride" property="appDescride" jdbcType="VARCHAR" />
+    <result column="app_attachment" property="appAttachment" jdbcType="VARCHAR" />
+    <result column="app_field" property="appField" jdbcType="VARCHAR" />
+    <result column="app_status" property="appStatus" jdbcType="VARCHAR" />
+    <result column="app_version" property="appVersion" jdbcType="VARCHAR" />
+    <result column="create_name" property="createName" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_name" property="updateName" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+        app_id, app_title, app_title_long,app_img,app_descride,app_attachment,app_field,app_status,create_name,create_date,update_name,update_date
+    </sql>
+  <sql id="table">
+      alz_ps_article
+    </sql>
+  <sql id="condition_item">
+    <if test="item.appId != null" >
+      app_id=#{item.appId}
+    </if>
+    <if test="item.appTitle != null" >
+      AND app_title=#{item.appTitle}
+    </if>
+    <if test="item.appTitleLong != null" >
+      AND app_title_long=#{item.appTitleLong}
+    </if>
+    <if test="item.appImg != null" >
+      AND app_img=#{item.appImg}
+    </if>
+
+    <if test="item.appDescride != null" >
+      AND app_descride=#{item.appDescride}
+    </if>
+    <if test="item.appAttachment != null" >
+      AND app_attachment=#{item.appAttachment}
+    </if>
+    <if test="item.appField != null" >
+      AND app_field=#{item.appField}
+    </if>
+    <if test="item.appStatus != null" >
+      AND app_status=#{item.appStatus}
+    </if>
+    <if test="item.createName != null" >
+      AND create_name=#{item.createName}
+    </if>
+    <if test="item.updateName != null" >
+      AND update_name=#{item.updateName}
+    </if>
+
+    <if test="item.createDate != null" >
+      AND create_date=#{item.createDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="item.updateDate != null" >
+      AND update_date=#{item.updateDate,jdbcType=TIMESTAMP}
+    </if>
+  </sql>
+  <sql id="condition">
+    <if test="appId != null" >
+      app_id=#{appId}
+    </if>
+    <if test="appTitle != null" >
+      AND app_title=#{appTitle}
+    </if>
+    <if test="appTitleLong != null" >
+      AND app_title_long=#{appTitleLong}
+    </if>
+    <if test="appImg != null" >
+      AND app_img=#{appImg}
+    </if>
+    <if test="appDescride != null" >
+      AND app_descride=#{appDescride}
+    </if>
+    <if test="appAttachment != null" >
+      AND app_attachment=#{appAttachment}
+    </if>
+    <if test="appField != null" >
+      AND app_field=#{appField}
+    </if>
+    <if test="appStatus != null" >
+      AND app_status=#{appStatus}
+    </if>
+    <if test="createName != null" >
+      AND create_name=#{createName}
+    </if>
+    <if test="updateName != null" >
+      AND update_name=#{updateName}
+    </if>
+    <if test="createDate != null" >
+      AND create_date=#{createDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="updateDate != null" >
+      AND update_date=#{updateDate,jdbcType=TIMESTAMP}
+    </if>
+  </sql>
+
+  <sql id="keyId">
+        app_id=#{appId}
+  </sql>
+  <sql id="keyId_item">
+        app_id=#{item.appId}
+  </sql>
+  <sql id="putValue">
+        #{appId,jdbcType=VARCHAR},
+        #{appTitle,jdbcType=VARCHAR},
+        #{appTitleLong,jdbcType=VARCHAR},
+        #{appImg,jdbcType=VARCHAR},
+        #{appDescride,jdbcType=VARCHAR},
+        #{appAttachment,jdbcType=VARCHAR},
+        #{appField,jdbcType=VARCHAR},
+        #{appStatus,jdbcType=VARCHAR},
+        #{createName,jdbcType=VARCHAR},
+        #{updateName,jdbcType=VARCHAR},
+        #{createDate,jdbcType=TIMESTAMP}
+        #{updateDate,jdbcType=TIMESTAMP}
+    </sql>
+  <sql id="conditionKey">
+    <if test="appId != null" >
+      app_id,
+    </if>
+    <if test="appTitle != null" >
+      app_title,
+    </if>
+    <if test="appTitleLong != null" >
+      app_title_long,
+    </if>
+    <if test="appImg != null" >
+      app_img,
+    </if>
+
+    <if test="appDescride != null" >
+      app_descride,
+    </if>
+    <if test="appAttachment != null" >
+      app_attachment,
+    </if>
+    <if test="appField != null" >
+      app_field,
+    </if>
+    <if test="appStatus != null" >
+      app_status,
+    </if>
+    <if test="createName != null" >
+      create_name,
+    </if>
+    <if test="updateName != null" >
+      update_name,
+    </if>
+    <if test="createDate != null" >
+      create_date,
+    </if>
+    <if test="updateDate != null" >
+      update_date,
+    </if>
+  </sql>
+  <sql id="condition_value_add">
+    <if test="appId == null" >
+      ((SELECT REPLACE(UUID(), '-', '') AS app_id),
+    </if>
+    <if test="appId != null" >
+      #{appId},
+    </if>
+    <if test="appTitle != null" >
+      #{appTitle},
+    </if>
+    <if test="appTitleLong != null" >
+      #{appTitleLong},
+    </if>
+    <if test="appImg != null" >
+      #{appImg},
+    </if>
+
+    <if test="appDescride != null" >
+      #{appDescride},
+    </if>
+    <if test="appAttachment != null" >
+      #{appAttachment},
+    </if>
+    <if test="appField != null" >
+      #{appField},
+    </if>
+    <if test="appStatus != null" >
+      #{appStatus},
+    </if>
+    <if test="createName != null" >
+      #{createName},
+    </if>
+    <if test="updateName != null" >
+      #{updateName},
+    </if>
+    <if test="createDate != null" >
+      #{createDate,jdbcType=TIMESTAMP},
+    </if>
+    <if test="updateDate != null" >
+      #{updateDate,jdbcType=TIMESTAMP}
+    </if>
+  </sql>
+  <sql id="condition_value_add_item">
+    <if test="appId == null" >
+      ((SELECT REPLACE(UUID(), '-', '') AS app_id),
+    </if>
+    <if test="item.appId != null" >
+      #{item.appId},
+    </if>
+    <if test="item.appTitle != null" >
+      #{item.appTitle},
+    </if>
+    <if test="item.appTitleLong != null" >
+      #{item.appTitleLong},
+    </if>
+    <if test="item.appImg != null" >
+      #{item.appImg},
+    </if>
+
+    <if test="item.appDescride != null" >
+      #{item.appDescride},
+    </if>
+    <if test="item.appAttachment != null" >
+      #{item.appAttachment},
+    </if>
+    <if test="item.appField != null" >
+      #{item.appField},
+    </if>
+    <if test="item.appStatus != null" >
+      #{item.appStatus},
+    </if>
+    <if test="item.createName != null" >
+      #{item.createName},
+    </if>
+    <if test="item.updateName != null" >
+      #{item.updateName},
+    </if>
+    <if test="item.createDate != null" >
+      #{item.createDate,jdbcType=TIMESTAMP},
+    </if>
+    <if test="item.updateDate != null" >
+      #{item.updateDate,jdbcType=TIMESTAMP}
+    </if>
+  </sql>
+  <sql id="condition_value_update">
+  <if test="appId != null" >
+    app_id=#{appId},
+  </if>
+  <if test="appTitle != null" >
+    app_title=#{appTitle},
+  </if>
+  <if test="appTitleLong != null" >
+    app_title_long=#{appTitleLong},
+  </if>
+  <if test="appImg != null" >
+    app_img=#{appImg},
+  </if>
+  <if test="appDescride != null" >
+    app_descride=#{appDescride},
+  </if>
+  <if test="appAttachment != null" >
+    app_attachment=#{appAttachment},
+  </if>
+  <if test="appField != null" >
+    app_field=#{appField},
+  </if>
+  <if test="appStatus != null" >
+    app_status=#{appStatus},
+  </if>
+  <if test="createName != null" >
+    create_name=#{createName},
+  </if>
+  <if test="updateName != null" >
+    update_name=#{updateName},
+  </if>
+  <if test="createDate != null" >
+    create_date=#{createDate,jdbcType=TIMESTAMP},
+  </if>
+  <if test="updateDate != null" >
+    update_date=#{updateDate,jdbcType=TIMESTAMP}
+  </if>
+</sql>
+  <sql id="condition_value_update_item">
+    <if test="item.appId != null" >
+      app_id=#{item.appId},
+    </if>
+    <if test="item.appTitle != null" >
+      app_title=#{item.appTitle},
+    </if>
+    <if test="item.appTitleLong != null" >
+      app_title_long=#{item.appTitleLong},
+    </if>
+    <if test="item.appImg != null" >
+      app_img=#{item.appImg},
+    </if>
+    <if test="item.appDescride != null" >
+      app_descride=#{item.appDescride},
+    </if>
+    <if test="item.appAttachment != null" >
+      app_attachment=#{item.appAttachment},
+    </if>
+    <if test="item.appField != null" >
+      app_field=#{item.appField},
+    </if>
+    <if test="item.appStatus != null" >
+      app_status=#{item.appStatus},
+    </if>
+    <if test="item.createName != null" >
+      create_name=#{item.createName},
+    </if>
+    <if test="item.updateName != null" >
+      update_name=#{item.updateName},
+    </if>
+    <if test="item.createDate != null" >
+      create_date=#{item.createDate,jdbcType=TIMESTAMP},
+    </if>
+    <if test="item.updateDate != null" >
+      update_date=#{item.updateDate,jdbcType=TIMESTAMP}
+    </if>
+  </sql>
+  <sql id="order">
+        ORDER BY
+        ${order} ${sort}
+  </sql>
+  <sql id="group">
+        GROUP BY ${group}
+  </sql>
+
+  <select id="findPageBy" resultMap="BaseResultMap" parameterType="article">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM
+    <include refid="table"/>
+    <where>
+      <include refid="condition"/>
+    </where>
+    <if test="group != null" >
+      <include refid="group"/>
+    </if>
+    <if test="order != null" >
+      <include refid="order"/>
+    </if>
+  </select>
+  <select id="findById"  resultMap="BaseResultMap" parameterType="string" >
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM
+    <include refid="table"/>
+    <where>
+      <include refid="keyId"/>
+    </where>
+  </select>
+
+  <select id="findListBy"  resultMap="BaseResultMap" parameterType="article" >
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM
+    <include refid="table"/>
+    <where>
+      <include refid="condition"/>
+    </where>
+  </select>
+
+  <select id="findByList"  resultMap="BaseResultMap" parameterType="list" >
+    <foreach  item="item" collection="list" separator=";" open="(" close=")">
+      SELECT
+      <include refid="Base_Column_List"/>
+      FROM
+      <include refid="table"/>
+      <where>
+        <include refid="condition_item"/>
+      </where>
+    </foreach>
+  </select>
+  <insert id="save" parameterType="article" >
+    insert into <include refid="table"/>
+   <!-- <selectKey keyProperty="id" resultType="java.lang.String" order="BEFORE">
+      select replace(uuid(),'-','') from dual
+    </selectKey>-->
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <include refid="conditionKey"/>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <include refid="condition_value_add"/>
+    </trim>
+  </insert>
+  <insert id="saveList" parameterType="list" >
+    insert into <include refid="table"/>
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <include refid="conditionKey"/>
+    </trim>
+    <foreach collection="list" index="index" item="item" separator=",">
+      ( <include refid="condition_value_add_item"/>)
+    </foreach>
+  </insert>
+  <update id="update" parameterType="article">
+    update <include refid="table"/>
+    <set >
+      <include refid="condition_value_update"/>
+    </set>
+    <where>
+      <include refid="keyId"/>
+    </where>
+  </update>
+  <update id="updateList" parameterType="list">
+    <foreach  item="item" collection="list" separator=";" open="(" close=")">
+      update <include refid="table"/>
+      <set >
+        <include refid="condition_value_update_item"/>
+      </set>
+      <where>
+        <include refid="keyId_item"/>
+      </where>
+    </foreach>
+  </update>
+  <delete id="deleteById" parameterType="string" >
+    delete from
+    <include refid="table"/>
+    <where>
+      <include refid="keyId"/>
+    </where>
+  </delete>
+
+  <select id="findByVersion" resultMap="BaseResultMap" >
+    select
+      *
+    from
+      alz_ps_article
+    where
+      app_version = #{arg0}
+  </select>
+
+
+
+</mapper>

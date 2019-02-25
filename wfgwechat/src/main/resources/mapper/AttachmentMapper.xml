@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aiwen.wfgwechat.dao.AttachmentMapper" >
+  <resultMap id="BaseResultMap" type="com.aiwen.wfgwechat.entity.pojo.Attachment" >
+    <id column="attachment_id" property="attachment_id" jdbcType="VARCHAR" />
+    <result column="attachment_name" property="attachment_name" jdbcType="VARCHAR" />
+    <result column="attachment_url" property="attachment_url" jdbcType="VARCHAR" />
+    <result column="attachment_size" property="attachment_size" jdbcType="VARCHAR" />
+    <result column="attachment_type" property="attachment_type" jdbcType="VARCHAR" />
+    <result column="attachment_type" property="attachment_type" jdbcType="VARCHAR" />
+    <result column="attachment_extension" property="attachment_extension" jdbcType="VARCHAR" />
+    <result column="attachment_date" property="attachment_date" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="field">
+    attachment_id,attachment_name,attachment_url,attachment_size,attachment_type,attachment_extension,attachment_date
+  </sql>
+
+  <sql id="table">
+    alz_ps_attachment
+  </sql>
+
+  <insert id="insertList" parameterType="java.util.List">
+    insert into
+        alz_ps_attachment
+
+    values
+      <foreach collection="list" index="index" item="item" separator=",">
+        (#{attachment_id},#{attachment_name},#{attachment_url},#{attachment_size},#{attachment_type},#{attachment_extension},#{attachment_date})
+      </foreach>
+  </insert>
+  <insert id="save" parameterType="com.aiwen.wfgwechat.entity.pojo.Attachment">
+    insert into alz_ps_attachment values (#{attachment_id},#{attachment_name},#{attachment_url},#{attachment_size},#{attachment_type},#{attachment_extension},#{attachment_date})
+  </insert>
+
+</mapper>

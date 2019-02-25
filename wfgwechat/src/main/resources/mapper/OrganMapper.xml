@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aiwen.wfgwechat.dao.OrganMapper" >
+  <resultMap id="BaseResultMap" type="com.aiwen.wfgwechat.entity.pojo.Organ" >
+    <id column="organ_id" property="organId" jdbcType="VARCHAR" />
+    <result column="organ_name" property="organName" jdbcType="VARCHAR" />
+    <result column="organ_url" property="organUrl" jdbcType="VARCHAR" />
+    <result column="public_id" property="publicId" jdbcType="VARCHAR" />
+    <result column="public_name" property="publicName" jdbcType="VARCHAR" />
+    <result column="small_id" property="smallId" jdbcType="VARCHAR" />
+    <result column="small_name" property="smallName" jdbcType="VARCHAR" />
+    <result column="create_name" property="createName" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_name" property="updateName" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+</mapper>

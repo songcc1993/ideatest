@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aiwen.wfgwechat.dao.ChannelMapper" >
+  <resultMap id="BaseResultMap" type="com.aiwen.wfgwechat.entity.pojo.Channel" >
+    <id column="field_item_id" property="fieldItemId" jdbcType="VARCHAR" />
+    <result column="field_item_name" property="fieldItemName" jdbcType="VARCHAR" />
+    <result column="field_item_value" property="fieldItemValue" jdbcType="VARCHAR" />
+    <result column="parent_item_id" property="parentItemId" jdbcType="VARCHAR" />
+    <result column="organ_id" property="organId" jdbcType="VARCHAR" />
+    <result column="group_id" property="groupId" jdbcType="VARCHAR" />
+    <result column="create_name" property="createName" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_name" property="updateName" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="start" property="start" jdbcType="VARCHAR" />
+  </resultMap>
+
+</mapper>
